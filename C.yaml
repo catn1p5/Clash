@@ -1,20 +1,20 @@
 # url 里填写自己的订阅,名称不能重复
 proxy-providers:
-    provider1:
+    Nex:
       url: ""
       type: http
       interval: 86400
       health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
       override:
-        additional-prefix: "[provider1]"
+        additional-prefix: "[Nex]"
   
-    provider2:
-      url: ""
-      type: http
-      interval: 86400
-      health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
-      override:
-        additional-prefix: "[provider2]"
+#    provider:
+#      url: ""
+#      type: http
+#      interval: 86400
+#      health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
+#      override:
+#        additional-prefix: "[provider]"
   
   proxies: 
     - name: "直连"
@@ -134,7 +134,21 @@ proxy-providers:
     - name: 其他
       type: select
       proxies:  [默认,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择,直连]
-  
+
+############################################################      
+    - name: Ehentai
+      type: select
+      proxies:  [默认,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择,直连]
+
+    - name: Binance
+      type: select
+      proxies:  [默认,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择,直连]
+
+    - name: Pixiv
+      type: select
+      proxies:  [默认,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择,直连]            
+############################################################
+    
     #分隔,下面是地区分组
     - name: 香港
       type: select
@@ -196,7 +210,13 @@ proxy-providers:
     - RULE-SET,spotify_domain,Spotify
     - RULE-SET,cn_domain,国内
     - RULE-SET,geolocation-!cn,其他
-  
+
+############################################################    
+    - RULE-SET,ehentai_domain,Ehentai
+    - RULE-SET,binance_domain,Binance
+    - RULE-SET,pixiv_domain,Pixiv
+############################################################  
+
     - RULE-SET,google_ip,Google
     - RULE-SET,netflix_ip,NETFLIX
     - RULE-SET,telegram_ip,Telegram
@@ -217,9 +237,6 @@ proxy-providers:
     biliintl_domain:
       <<: *domain
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/biliintl.mrs"
-    ehentai_domain:
-      <<: *domain
-      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs"
     github_domain:
       <<: *domain
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"
@@ -247,12 +264,22 @@ proxy-providers:
     spotify_domain:
       <<: *domain
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs"
-    pixiv_domain:
-      <<: *domain
-      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.mrs"
     geolocation-!cn:
       <<: *domain
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"
+
+
+############################################################      
+    ehentai_domain:
+      <<: *domain
+      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs"
+    binance_domain:
+      <<: *domain
+      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/binance.mrs"
+    pixiv_domain:
+      <<: *domain
+      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.mrs"
+############################################################        
   
     private_ip:
       <<: *ip
